@@ -14,7 +14,7 @@ function descriptor()
         version = "1.0",
         author = "",
         url = 'http://',
-        shortdesc = "short description",
+        shortdesc = "Split",
         description = "full description",
         capabilities = {"menu", "input-listener", "meta-listener", "playing-listener"}
     }
