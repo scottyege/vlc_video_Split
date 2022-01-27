@@ -111,13 +111,13 @@ end
 function clickRecordStartTime()
     --gTsStart=toSecond(getCurrentPlayerTime())
     gTsStart=toFormatTime(getCurrentPlayerTime())
-    startHtml:set_text(toFormatTime(getCurrentPlayerTime()))
+    startHtml:set_text(gTsStart)
 end
 
 function clickRecordEndTime()
     --gTsEnd=toSecond(getCurrentPlayerTime())
     gTsEnd=toFormatTime(getCurrentPlayerTime())
-    endHtml:set_text(toFormatTime(getCurrentPlayerTime()))
+    endHtml:set_text(gTsEnd)
 end
 
 function clickSplit()
@@ -163,13 +163,14 @@ function toFormatTime(microsecond)
     local a = total%3600
     local hr = math.floor(total/3600)
     local min = math.floor(a/60)
-    local sec = math.floor(a%60)
-    return string.format("%02d:%02d:%02d",hr,min,sec);
+    local sec = a%60
+    return string.format("%02d:%02d:%02f",hr,min,sec);
 end
 
 function makeCommand(input, t1, t2, output)
     --ffmpeg -i [input] -ss [t1] -to [t2] -c copy [output]
-    return string.format("ffmpeg -i \"%s\" -ss %s -to %s -c copy \"%s\"", input, t1, t2, output)
+    --https://trac.ffmpeg.org/wiki/Seeking
+    return string.format("ffmpeg -ss %s -i \"%s\" -to %s -c copy \"%s\"", t1, input, t2, output)
 end
 
 function Debug(str)
