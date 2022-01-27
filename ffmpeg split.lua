@@ -125,7 +125,8 @@ function clickSplit()
     local newPath = getNewPath(old, w1:get_text())
     local cmd = makeCommand(old, gTsStart, gTsEnd, newPath)
     Debug(cmd)
-    os.execute(cmd)
+    --os.execute(cmd)
+    --vlc extension will hang here if it takes long time
 end
 
 -------function----------------------
