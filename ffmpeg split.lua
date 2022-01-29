@@ -171,7 +171,7 @@ end
 function makeCommand(input, t1, t2, output)
     --ffmpeg -i [input] -ss [t1] -to [t2] -c copy [output]
     --https://trac.ffmpeg.org/wiki/Seeking
-    return string.format("ffmpeg -ss %s -i \"%s\" -to %s -c copy \"%s\"", t1, input, t2, output)
+    return string.format("ffmpeg -i \"%s\" -ss %s -to %s -c copy \"%s\"", t1, input, t2, output)
 end
 
 function Debug(str)
