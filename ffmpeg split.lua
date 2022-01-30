@@ -140,6 +140,7 @@ function getFullPath(uri)
    	uri = string.gsub(uri, '^file:///', '')
    	uri = string.gsub(uri, '/', '\\')
 	uri = string.gsub(uri, '%%20', ' ')
+    uri = string.gsub(uri, '%%40', '@')
 	return uri
    	--strCmd = 'echo '..uri..' |clip'
    	--os.execute(strCmd)
